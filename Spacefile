@@ -1,0 +1,34 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+app_name: "SpaceVault"
+icon: "./assets/v1_icon_deta.png"
+micros:
+  # - name: docs
+  #   src: ./docs
+  #   path: docs
+  #   public_routes:
+  #     - "/*"
+  #   engine: nodejs16
+  #   commands:
+  #   - export
+  #   include:
+  #     - bundled
+  #     - server.js
+  #     - package.json
+  #   run: node server.js
+  #   dev: next dev
+  - name: frontend
+    primary: true
+    src: .
+    public_routes:
+      - "/api/v1/"
+      - "/v/*/public/*"
+    #engine: svelte-kit
+    engine: nodejs16
+    run: node bundled/index.js
+    include:
+      - bundled
+      - package.json
+    #commands:
+    #- npm run build
+    #dev: vite dev --port $PORT
